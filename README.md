@@ -1,3 +1,7 @@
+# This is a proof-of-concept Drag 'N' Drop Layout Designer based on Bootstrap grid system.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
