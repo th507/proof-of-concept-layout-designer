@@ -10,14 +10,13 @@ function App() {
     <Nav /><br />
     <div className="container-fluid">
         <div className="row">
-            <div className="col-2 walnut">
+            <div className="col-4 walnut">
               <Sidebar /> 
             </div>
-            <div className="col-10 grey"><Preview /></div>
+            <div className="col-8"><Preview /></div>
         </div>
     </div>
-    <br />
-    <a className="btn btn-danger btn-lg" role="button" href="/">Clear Container</a>
+    <hr /><br />
     
   </>
   )

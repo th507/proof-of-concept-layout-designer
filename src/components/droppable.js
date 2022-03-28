@@ -18,11 +18,6 @@ class Droppable extends React.Component {
     this.state = {
       content: this.hasContent ? this.props.children : null,
     }
-
-    this.tranferrable = new Scheme({
-      name: this.name,
-      value: this,
-    })
   }
   createScheme() {
     return new Scheme({

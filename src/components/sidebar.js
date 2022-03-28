@@ -96,15 +96,37 @@ class MyNumber extends Number {
 
 class Sidebar extends React.Component {
   static KEYPATH = "application/my-app"
-  static nameList = ['row', ...[...new MyNumber(12)].map(i => `col-${i}`)]
+  static nameList = (variant = '') => ['row', `col${variant}`, ...[...new MyNumber(12)].map(i => `col${variant}-${i}`)]
    
   render() {
     return (
       <div className="sidebar">
-      {
-        this.constructor.nameList.map((name, key) => <Item name={name} key={key} />)
-      }
-      <DemoTableWrapper name="3rd party table" />
+        <div className="card-title">
+          <span className="position-relative btn btn-lg disabled">Responsive Layout
+            <span className="position-absolute top-0 start-100 translate-middle badge bg-danger">
+              new<span className="visually-hidden">generation</span>
+            </span>
+          </span>
+        </div>
+        { this.constructor.nameList('-sm').map((name, key) => <Item name={name} key={key} />) }
+      
+        <hr /><br />
+        <div className="card-title">
+          <span className="position-relative btn btn-lg disabled">Legacy Layout
+            <span className="position-absolute top-0 start-100 translate-middle badge bg-secondary">
+              PC Only<span className="visually-hidden">generation</span>
+            </span>
+          </span>
+        </div>
+        { this.constructor.nameList('').map((name, key) => <Item name={name} key={key} />) }
+
+        <hr />
+        <div className="card-title">
+          <span className="position-relative btn btn-lg disabled">3rd party Components
+          </span>
+        </div>
+
+        <DemoTableWrapper name="3rd party table" />
       </div>
     )
   }
