@@ -10,14 +10,12 @@ function App() {
     <Nav /><br />
     <div className="container-fluid">
         <div className="row">
-            <div className="col-4 walnut">
-              <Sidebar /> 
+            <div className="col-3 walnut">
+                <Sidebar /> 
             </div>
-            <div className="col-8"><Preview /></div>
+            <div className="col-9"><Preview /></div>
         </div>
     </div>
-    <hr /><br />
-    
   </>
   )
 }

@@ -112,9 +112,13 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div className="sidebar">
-        <ItemSection name="Responsive Layout" badge="Adapt for Phone" badgetype="danger" />
+        <ItemSection name="Responsive Layout" badge="Phone + PC" badgetype="danger" />
         { this.constructor.nameList('-sm').map((name, key) => <Item name={name} key={key} />) }
-      
+
+        <hr />
+        <ItemSection name="Responsive Layout" badge="Phone + Pad + PC" badgetype="danger" />
+        { this.constructor.nameList('-md').map((name, key) => <Item name={name} key={key} />) }
+
         <hr />
         <ItemSection name="Legacy Layout" badge="PC Only" />
         { this.constructor.nameList('').map((name, key) => <Item name={name} key={key} />) }
