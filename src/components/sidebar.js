@@ -6,6 +6,8 @@ import Scheme from '../scheme'
 
 import DemoTable from './demo-table'
 
+import DemoCalendar from './demo-calendar'
+
 // a factory function for Sidebar items
 class Item extends React.Component {
   constructor(props) {
@@ -81,9 +83,14 @@ class Item extends React.Component {
 }
 
 // this is how you could use to use 3rd party component
-class DemoTableWrapper extends Item {
+class Wrapper extends Item {
+  constructor(props) {
+    super(props)
+    this.DemoClass = props.element
+    this.name = props.name
+  }
   toPreviewItem(children = null) {
-    return <DemoTable />
+    return <this.DemoClass />
   }
 }
 
@@ -104,7 +111,7 @@ function ItemSection(props) {
         </h5>
   )
 }
-
+// <DemoTableWrapper name="rc-table" />
 class Sidebar extends React.Component {
   static KEYPATH = "application/my-app"
   static nameList = (variant = '') => ['row', `col${variant}`, ...[...new MyNumber(12)].map(i => `col${variant}-${i}`)]
@@ -125,7 +132,8 @@ class Sidebar extends React.Component {
 
         <hr />
         <ItemSection name="3rd party Components" badge="Community Friendly" badgetype="success" />
-        <DemoTableWrapper name="3rd party table" />
+        <Wrapper element={DemoTable} name="rc-table" />
+        <Wrapper element={DemoCalendar} name="react-calendar" />
       </div>
     )
   }
