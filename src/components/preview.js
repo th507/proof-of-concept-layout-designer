@@ -6,7 +6,7 @@ import Droppable from './droppable'
 function Preview() {
   return (
     <Droppable>
-      <div id="target" className="grey container"></div>
+      <div id="target" className="container"></div>
     </Droppable>
   )
 }

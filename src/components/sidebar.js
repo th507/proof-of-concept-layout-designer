@@ -21,7 +21,7 @@ class Item extends React.Component {
     <button 
       draggable="true" 
       type="button" 
-      className="btn btn-lg btn-primary my-library-item"
+      className="btn btn-outline-secondary my-library-item"
       onDragStart={this.dragstart} 
       onDragEnd={this.dragend} >
       {this.name}
@@ -94,6 +94,17 @@ class MyNumber extends Number {
   }
 }
 
+function ItemSection(props) {
+  var {name, badge, badgetype='secondary'} = props
+  return (
+        <h5 className="card-title">{name}
+          {badge ? <span className={ "badge bg-" + badgetype }>
+            {badge}<span className="visually-hidden">generation</span>
+              </span> : ''}
+        </h5>
+  )
+}
+
 class Sidebar extends React.Component {
   static KEYPATH = "application/my-app"
   static nameList = (variant = '') => ['row', `col${variant}`, ...[...new MyNumber(12)].map(i => `col${variant}-${i}`)]
@@ -101,31 +112,15 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div className="sidebar">
-        <div className="card-title">
-          <span className="position-relative btn btn-lg disabled">Responsive Layout
-            <span className="position-absolute top-0 start-100 translate-middle badge bg-danger">
-              new<span className="visually-hidden">generation</span>
-            </span>
-          </span>
-        </div>
+        <ItemSection name="Responsive Layout" badge="Adapt for Phone" badgetype="danger" />
         { this.constructor.nameList('-sm').map((name, key) => <Item name={name} key={key} />) }
       
-        <hr /><br />
-        <div className="card-title">
-          <span className="position-relative btn btn-lg disabled">Legacy Layout
-            <span className="position-absolute top-0 start-100 translate-middle badge bg-secondary">
-              PC Only<span className="visually-hidden">generation</span>
-            </span>
-          </span>
-        </div>
+        <hr />
+        <ItemSection name="Legacy Layout" badge="PC Only" />
         { this.constructor.nameList('').map((name, key) => <Item name={name} key={key} />) }
 
         <hr />
-        <div className="card-title">
-          <span className="position-relative btn btn-lg disabled">3rd party Components
-          </span>
-        </div>
-
+        <ItemSection name="3rd party Components" badge="Community Friendly" badgetype="success" />
         <DemoTableWrapper name="3rd party table" />
       </div>
     )

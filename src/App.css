@@ -41,20 +41,13 @@
   background-color: white;
 }
 
-.grey {
-  background-color: #eee;
-}
-
-.greater-grey {
-  background-color: #ccc;
-}
-
 .my-library-item {
   margin: 5px 5px;
-  background-color: #C48E69;
 }
 
 #target {
+  background-color: #eee;
+  
   min-height: 600px;
   /* display: flex; */
   align-items: stretch;
@@ -64,16 +57,20 @@ div#target {
 }
 div#target::before {
   position: absolute;
-  bottom: 0;
+  top: 0;
 }
-
+div#target > div > div:not(:empty)::before {
+  content: ""
+}
 div#target > div > div:hover {
   background-color: #9F7462;
 }
 
 [data-style=droppable-placeholder] {
   /* width: 100%; */
-  box-shadow: #777 0 0 2px 2px;
+  /* box-shadow: #777 0 0 2px 2px; */
+  box-sizing: border-box;
+  border: solid #5B6DCD 2px;
   color: #333;
   min-height:100px;
 }
@@ -91,12 +88,19 @@ div#target > div > div:hover {
 }
 
 
-
 #target > .row::before {
   transform: translateX(-1.6em);
   background-color: #C48E69;
   color: #593A27;
 }
+#target > .row[dragonto]::before {
+  color: white;
+}
+.row[dragonto]::before {
+  background-color: #C48E69;
+  color: white;/*#593A27;*/
+}
+
 
 #target  .col-1 div.row::before,
 #target  .col-2 div.row::before,
@@ -109,17 +113,38 @@ div#target > div > div:hover {
 #target  .col-9 div.row::before,
 #target .col-10 div.row::before,
 #target .col-11 div.row::before, 
-#target .col-12 div.row::before {
+#target .col-12 div.row::before,
+#target  .col-sm-1 div.row::before,
+#target  .col-sm-2 div.row::before,
+#target  .col-sm-3 div.row::before,
+#target  .col-sm-4 div.row::before,
+#target  .col-sm-5 div.row::before,
+#target  .col-sm-6 div.row::before,
+#target  .col-sm-7 div.row::before,
+#target  .col-sm-8 div.row::before,
+#target  .col-sm-9 div.row::before,
+#target .col-sm-10 div.row::before,
+#target .col-sm-11 div.row::before, 
+#target .col-sm-12 div.row::before,
+#target  .col-md-1 div.row::before,
+#target  .col-md-2 div.row::before,
+#target  .col-md-3 div.row::before,
+#target  .col-md-4 div.row::before,
+#target  .col-md-5 div.row::before,
+#target  .col-md-6 div.row::before,
+#target  .col-md-7 div.row::before,
+#target  .col-md-8 div.row::before,
+#target  .col-md-9 div.row::before,
+#target .col-md-10 div.row::before,
+#target .col-md-11 div.row::before, 
+#target .col-md-12 div.row::before
+{
   transform: translateY(-1.5em);
   background-color: #C48E69;
   font-size: 1.5rem;
 }
 
 
-.row[dragonto]::before {
-  background-color: #C48E69;
-  color: #593A27;
-}
 div[data-style=droppable-placeholder]::before {
   box-sizing: content-box;
   position: absolute;
@@ -134,7 +159,7 @@ div[dragonto]::before {
   align-self: start; 
   content: attr(class);
   font: 2rem monospace;
-  color: #333;
+  color: white;
 }
 
 .sidebar [draggable=true] {
