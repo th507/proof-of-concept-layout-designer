@@ -10,7 +10,7 @@ function App() {
     <Nav /><br />
     <div className="container-fluid">
         <div className="row">
-            <div className="col-3 walnut">
+            <div className="col-3">
                 <Sidebar /> 
             </div>
             <div className="col-9"><Preview /></div>

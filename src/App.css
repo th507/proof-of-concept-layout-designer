@@ -37,8 +37,8 @@
   }
 }
 
-.walnut {
-  background-color: white;
+.shironeri {
+  background-color: #FFDDCA;
 }
 
 .my-library-item {
@@ -59,9 +59,14 @@ div#target::before {
   position: absolute;
   top: 0;
 }
-div#target > div > div:not(:empty)::before {
+div#target > div.row > div:not(:empty)::before {
   content: ""
 }
+
+div.row > div > div.row > div:not(:empty)::before {
+  content: ""
+}
+
 div#target > div > div:hover {
   background-color: #9F7462;
 }

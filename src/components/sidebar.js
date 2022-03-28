@@ -104,8 +104,8 @@ class MyNumber extends Number {
 function ItemSection(props) {
   var {name, badge, badgetype='secondary'} = props
   return (
-        <h5 className="card-title">{name}
-          {badge ? <span className={ "badge bg-" + badgetype }>
+        <h5 className="mt-2 card-title shironeri">{name}
+          {badge ? <span className={ "mx-2 badge bg-" + badgetype }>
             {badge}<span className="visually-hidden">generation</span>
               </span> : ''}
         </h5>
@@ -122,15 +122,12 @@ class Sidebar extends React.Component {
         <ItemSection name="Responsive Layout" badge="Phone + PC" badgetype="danger" />
         { this.constructor.nameList('-sm').map((name, key) => <Item name={name} key={key} />) }
 
-        <hr />
         <ItemSection name="Responsive Layout" badge="Phone + Pad + PC" badgetype="danger" />
         { this.constructor.nameList('-md').map((name, key) => <Item name={name} key={key} />) }
 
-        <hr />
         <ItemSection name="Legacy Layout" badge="PC Only" />
         { this.constructor.nameList('').map((name, key) => <Item name={name} key={key} />) }
 
-        <hr />
         <ItemSection name="3rd party Components" badge="Community Friendly" badgetype="success" />
         <Wrapper element={DemoTable} name="rc-table" />
         <Wrapper element={DemoCalendar} name="react-calendar" />
