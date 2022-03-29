@@ -68,16 +68,23 @@ class Droppable extends React.Component {
     //console.log('in drop2', this.props.children)
 
     // shameful hack to get the order right
-    var contents = [<Droppable>{ receivedNode.value.toPreviewItem('moretext') }</Droppable>]
     if (ev.target.id === "target" && receivedNode.name === 'row') {
-      contents.push(this.state.content)
-    } else {
-      contents.unshift(this.state.content)
+      console.log("in #target", receivedNode)
+      this.setState({ content: 
+        (<>
+          <Droppable>{ receivedNode.value.toPreviewItem('moretext') }</Droppable>
+          {this.state.content}
+        </>)
+      })
+      return
     }
-    this.setState({
-      content: (
-        <>{ contents }</>
-      )
+    console.log("in #>sub", receivedNode.value)
+
+    this.setState({ content: 
+      (<>
+        {this.state.content}
+        <Droppable>{ receivedNode.value.toPreviewItem('moretext') }</Droppable>
+      </>)
     })
   }
 
