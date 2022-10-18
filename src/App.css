@@ -93,7 +93,7 @@ div#target > div > div:hover {
 }
 
 
-#target > .row::before {
+#target > .row:not(:empty)::before {
   transform: translateX(-1.6em);
   background-color: #C48E69;
   color: #593A27;

@@ -9,15 +9,9 @@ const KEYPATH = "application/my-app"
 class Droppable extends React.Component {
   constructor(props) {
     super(props)
-
-    this.hasContent = props.hasContent
+    let content = props.hasContent ? props.children : null
     
-    this.dragover = this.dragover.bind(this)
-    this.dragleave = this.dragleave.bind(this)
-    this.drop = this.drop.bind(this)
-    this.state = {
-      content: this.hasContent ? this.props.children : null,
-    }
+    this.state = { content }
   }
   createScheme() {
     return new Scheme({
@@ -27,7 +21,7 @@ class Droppable extends React.Component {
     })
   }
   
-  dragover(ev) {
+  dragover = (ev) => {
     ev.preventDefault()
     ev.stopPropagation()
     ev.dataTransfer.dropEffect = "copyLink"
@@ -35,14 +29,14 @@ class Droppable extends React.Component {
     ev.target.setAttribute('dragonto', 1)
     this.content = ''
   }
-  dragleave(ev) {
+  dragleave = (ev) => {
     ev.preventDefault()
     ev.stopPropagation()
     ev.dataTransfer.dropEffect = "none"    
 
     ev.target.removeAttribute('dragonto')
   }
-  drop(ev) {
+  drop = (ev) => {
     ev.preventDefault()
     ev.stopPropagation()
     ev.target.removeAttribute('dragonto')
@@ -54,7 +48,6 @@ class Droppable extends React.Component {
     if (!globalObject.length) return
     
     // avoid cleanup during this stage, since `dragend` happens after `drop`
-
     var receivedNode = globalObject.at(-1)
     const fakeID = ev.dataTransfer.getData(KEYPATH)
 
@@ -89,9 +82,9 @@ class Droppable extends React.Component {
   }
 
   render() {
-    console.log("in render", this.state)
+    console.log("in render", this.children)
     var output = React.Children.map(this.props.children, child => {
-      console.log("CCC", child)
+      ///console.log("CCC", child)
       return React.cloneElement(child, {
         onDrop: this.drop, 
         onDragOver: this.dragover, 
